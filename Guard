@@ -1,42 +1,59 @@
 package coding;
 
-import java.sql.*;
-import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class SwapNumbers {
 
-    public static void main(String[] args) {
-    	int i = 0;
-        int guardId ;
-        int visitorId;
-        
-        Connection connection = null;
-        try {
-            // below two lines are used for connectivity.
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/soft",
-                "root", "bb002628");
- 
- 
-            Statement statement;
-            statement = connection.createStatement();
-            
-            statement.close();
-            connection.close();
-        }
-        catch (Exception exception) {
-            System.out.println(exception);
-        }
-        
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Please insert Visitor ID ");
-        
-        visitorId = myObj.nextInt();
-        
-        
-        
-        
-        
+    public static void main(String[] args) throws Exception {
+    	
+    	getConnection();
+    	get();
+
+    }
+    
+    public static ArrayList<String> get() throws Exception{
+    	
+    	
+    	try {
+	    	Connection con = getConnection();
+	    	
+	    	PreparedStatement Statement = con.prepareStatement("SELECT * FROM guard");
+	    	
+	    	ResultSet result = Statement.executeQuery();
+	    	
+	    	ArrayList<String> array = new ArrayList<String>();
+	    	
+	    	while(result.next()) {
+	    		System.out.print(result.getString("first"));
+	    		System.out.print(" ");
+	    		System.out.println(result.getString("last"));
+	    		
+	    		array.add(result.getString("last"));
+	    	}
+	    	System.out.println("All records have been selected");
+	    	return array;
+    	
+		
+    	}catch(Exception e) {System.out.println(e);}
+		return null;
+    }
+    
+    public static Connection getConnection() throws Exception{
+    	
+    	try {
+    		Class.forName("com.mysql.cj.jdbc.Driver");
+    		String url = "jdbc:mysql://localhost:3306/soft";
+    		String username = "root";
+    		String password = "bb002628";
+    	
+    		Connection con = DriverManager.getConnection(url,username,password);
+    		System.out.println("Connected");
+    	}catch(Exception e) {System.out.println(e);}
+    	
+		return null;
     }
 }
