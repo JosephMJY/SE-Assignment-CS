@@ -1,0 +1,42 @@
+package coding;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class SwapNumbers {
+
+    public static void main(String[] args) {
+    	int i = 0;
+        int guardId ;
+        int visitorId;
+        
+        Connection connection = null;
+        try {
+            // below two lines are used for connectivity.
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/soft",
+                "root", "bb002628");
+ 
+ 
+            Statement statement;
+            statement = connection.createStatement();
+            
+            statement.close();
+            connection.close();
+        }
+        catch (Exception exception) {
+            System.out.println(exception);
+        }
+        
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Please insert Visitor ID ");
+        
+        visitorId = myObj.nextInt();
+        
+        
+        
+        
+        
+    }
+}
