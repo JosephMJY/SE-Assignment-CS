@@ -1,0 +1,122 @@
+import java.awt.EventQueue;
+import java.sql.*;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTextPane;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+
+public class Guard extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Guard frame = new Guard();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 * @throws Exception 
+	 */
+	public Guard() throws Exception {
+		Connection conn = DbConnection.database();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(324, 227, 89, 23);
+		contentPane.add(btnNewButton);
+		
+		JComboBox comboTicketGuard = new JComboBox();
+		comboTicketGuard.setBounds(82, 32, 245, 22);
+		contentPane.add(comboTicketGuard);
+		
+		JButton btnEnter = new JButton("Enter");
+		btnEnter.setBounds(82, 195, 89, 23);
+		contentPane.add(btnEnter);
+		
+		JButton btnLeave = new JButton("Leave");
+		btnLeave.setBounds(220, 195, 89, 23);
+		contentPane.add(btnLeave);
+		
+		JTextPane txtGuardDetails = new JTextPane();
+		txtGuardDetails.setEditable(false);
+		txtGuardDetails.setBounds(82, 53, 245, 132);
+		contentPane.add(txtGuardDetails);
+		String approve = "Approved";
+		PreparedStatement stm = conn.prepareStatement("select ticketid from user_request where status = ? ");
+		stm.setString(1, approve);
+		ResultSet rs = stm.executeQuery();
+		while(rs.next()) {
+			String id = rs.getString("ticketid");
+			comboTicketGuard.addItem(id);
+		}
+		
+		comboTicketGuard.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				try {
+				PreparedStatement statement = conn.prepareStatement("select name,ic,phone,purpose,tov,dov,entertime,leavetime from user_request where ticketid = ?");
+				statement.setString(1, comboTicketGuard.getSelectedItem().toString());  
+				ResultSet  rs = statement.executeQuery();
+				
+				
+				String details = "";
+				while(rs.next()) {
+					String name = rs.getString("name");
+					String ic = rs.getString("ic");
+					String phone = rs.getString("phone");
+					String purpose = rs.getString("purpose");
+					String tov = rs.getString("tov");
+					String dov = rs.getString("dov");
+					String entertime = rs.getString("entertime");
+					String leavetime = rs.getString("leavetime");
+					if(rs.wasNull()) {
+						entertime="Not Set.";
+						leavetime="Not Set.";
+					}
+					
+					 details = name +"\n" +ic +"\n" +phone +"\n" +purpose +"\n" +tov +"\n" +dov +"\n Enter Time:" +entertime+ "\n Leave Time:"+leavetime  ;
+				}
+				
+				txtGuardDetails.setText(details);
+			} catch (Exception e1) {
+			// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}				
+				
+			}
+		});
+		
+		
+		
+//		String reject = "Rejected";
+//		PreparedStatement stm2 = conn.prepareStatement("select ticketid from user_request where status = ? ");
+//		stm2.setString(1, reject);
+//		ResultSet rs2 = stm2.executeQuery();
+//		while(rs2.next()) {
+//			String id = rs2.getString("ticketid");
+//			comboTicketLeave.addItem(id);
+//		}
+	}
+}

@@ -1,0 +1,75 @@
+import java.awt.EventQueue;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.*;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+
+public class Guard extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Guard frame = new Guard();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 * @throws Exception 
+	 */
+	public Guard() throws Exception {
+		Connection conn = DbConnection.database();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(324, 227, 89, 23);
+		contentPane.add(btnNewButton);
+		
+		JComboBox comboTicketEnter = new JComboBox();
+		comboTicketEnter.setBounds(21, 34, 150, 22);
+		contentPane.add(comboTicketEnter);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(21, 78, 89, 23);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.setBounds(21, 174, 89, 23);
+		contentPane.add(btnNewButton_2);
+		
+		JComboBox comboTicketLeave = new JComboBox();
+		comboTicketLeave.setBounds(21, 128, 150, 22);
+		contentPane.add(comboTicketLeave);
+		
+		Statement stm = conn.createStatement();
+		ResultSet rs = stm.executeQuery("select ticketid from user_request where status LIKE 'Approve&' ");
+		
+		while(rs.next()) {
+			String id = rs.getString("ticketid");
+			comboTicketEnter.addItem(id);
+		}
+	}
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.wb.internal.core.model.property.editor.string.StringPropertyDialog">
+		<item key="x" value="535"/>
+		<item key="y" value="253"/>
+		<item key="width" value="530"/>
+		<item key="height" value="346"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.palette.dialogs.ImportArchiveDialog">
+		<item key="x" value="697"/>
+		<item key="y" value="299"/>
+		<item key="width" value="585"/>
+		<item key="height" value="442"/>
+		<list key="HISTORY_JAR_LIST">
+			<item value="C:\Users\leeli\OneDrive\Desktop\LiRong INTI\SE\lib\jgoodies-looks-2.4.1.jar"/>
+			<item value="C:\Users\leeli\OneDrive\Desktop\LiRong INTI\SE\lib\junit-4.6.jar"/>
+			<item value="C:\Users\leeli\OneDrive\Desktop\LiRong INTI\SE\lib\jgoodies-common-1.2.0.jar"/>
+			<item value="C:\Users\leeli\OneDrive\Desktop\LiRong INTI\SE\lib\jcalendar-1.4.jar"/>
+		</list>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.palette.dialogs.PalettePreferencesDialog">
+		<item key="x" value="697"/>
+		<item key="y" value="331"/>
+		<item key="width" value="525"/>
+		<item key="height" value="377"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.palette.dialogs.CategoryEditDialog">
+		<item key="x" value="697"/>
+		<item key="y" value="334"/>
+		<item key="width" value="525"/>
+		<item key="height" value="371"/>
+	</section>
+	<section name="org.eclipse.wb.internal.core.editor.palette.dialogs.PaletteManagerDialog">
+		<item key="x" value="697"/>
+		<item key="y" value="262"/>
+		<item key="width" value="525"/>
+		<item key="height" value="516"/>
+	</section>
+</section>
