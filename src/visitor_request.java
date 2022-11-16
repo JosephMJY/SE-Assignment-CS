@@ -370,7 +370,7 @@ public class visitor_request extends JFrame {
 		//Testing
 		//btnTestVisitor.doClick();
 		//line 201-202
-		btnTestVisitor.setVisible(false);
+		
 
 		
 		
