@@ -22,7 +22,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class Check extends JFrame {
+public class VisitorCheck extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtSearch;
@@ -34,7 +34,7 @@ public class Check extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Check frame = new Check();
+					VisitorCheck frame = new VisitorCheck();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class Check extends JFrame {
 	 * Create the frame.
 	 * @throws Exception 
 	 */
-	public Check() throws Exception {
+	public VisitorCheck() throws Exception {
 		setTitle("Check Ticket ");
 		Connection conn = DbConnection.database();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
