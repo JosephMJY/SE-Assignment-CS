@@ -93,9 +93,9 @@ public class visitor extends JFrame {
 		btnCheck.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Check ch = null;
+				VisitorCheck ch = null;
 				try {
-					ch = new Check();
+					ch = new VisitorCheck();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

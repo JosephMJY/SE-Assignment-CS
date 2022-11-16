@@ -117,6 +117,9 @@ public class Guard extends JFrame {
 				String handledBy = inCharge+" at "+lt+" Time: "+ldth+":"+ldtm;
 				System.out.println(handledBy);
 				int updateEnter = JOptionPane.showConfirmDialog(null, "Are you sure you want to enter the time?");
+				//Testing
+				//updateEnter=0;
+				//
 				if(updateEnter==0) {
 				try {
 					
@@ -173,6 +176,17 @@ public class Guard extends JFrame {
 		contentPane.add(lblGuard);
 		String inCharge = Login.txtStaffID.getText();
 		lblGuard.setText("Welcome, "+inCharge+".");
+		
+		JButton btnTestGuard = new JButton("Test Guard");
+		btnTestGuard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboTicketGuard.getSelectedIndex();
+				btnDnT.doClick();
+				
+			}
+		});
+		btnTestGuard.setBounds(364, 306, 89, 23);
+		contentPane.add(btnTestGuard);
 		
 		PreparedStatement stm = conn.prepareStatement("select ticketid from user_request where status = ? AND dov = ? order by ticketid desc");
 		stm.setString(1, approve);
@@ -367,7 +381,9 @@ public class Guard extends JFrame {
 			}
 			}
 		});
-		
+		//Testing
+		//btnTestGuard.doClick();
+		//line 120-121 for testing
 		
 
 	}

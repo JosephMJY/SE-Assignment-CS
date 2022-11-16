@@ -6,12 +6,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/josep/eclipse-workspace/SE_Visitor_GUI/mysql-connector-j-8.0.31.jar">
+	<classpathentry kind="lib" path="C:/Users/leeli/OneDrive/Documents/GitHub/SE-Assignment-CS/mysql-connector-j-8.0.31.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/josep/eclipse-workspace/SE_Visitor_GUI/itextpdf-5.4.0.jar">
+	<classpathentry kind="lib" path="C:/Users/leeli/OneDrive/Documents/GitHub/SE-Assignment-CS/itextpdf-5.4.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
