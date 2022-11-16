@@ -85,7 +85,7 @@ public class admin extends JFrame {
 		contentPane.add(jsp);
 		
 		//Contingency report function
-		JButton btnReport = new JButton("Generate Report");
+		JButton btnReport = new JButton("Generate & Save Report");
 		btnReport.setForeground(new Color(255, 250, 250));
 		btnReport.setBackground(new Color(70, 130, 180));
 		
@@ -218,6 +218,8 @@ public class admin extends JFrame {
 				e1.printStackTrace();
 			}if(txtpCheck.getText()=="") {
 				JOptionPane.showMessageDialog(null, "No record found.");
+				 txtpCheck.setText("No record found on this day.");
+
 			}
 			}
 		});
@@ -259,6 +261,8 @@ public class admin extends JFrame {
 		});
 		btnTestAdmin.setBounds(432, 351, 89, 23);
 		contentPane.add(btnTestAdmin);
+		//////////
+		btnTestAdmin.setVisible(false);
 		//Testing the AUTO-test function
 		btnTestAdmin.doClick();
 	}
