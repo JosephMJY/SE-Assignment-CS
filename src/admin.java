@@ -83,7 +83,9 @@ public class admin extends JFrame {
 		JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		jsp.setBounds(83,45,357,288);
 		contentPane.add(jsp);
-		JButton btnReport = new JButton("Generate Report");
+		
+		//Contingency report function
+		JButton btnReport = new JButton("Generate & Save Report");
 		btnReport.setForeground(new Color(255, 250, 250));
 		btnReport.setBackground(new Color(70, 130, 180));
 		
@@ -93,7 +95,9 @@ public class admin extends JFrame {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				String cDate = sdf.format(dateChooser.getDate());
 				
+				//storing generated document into a folder
 				LocalDate lt = LocalDate.now();
+				//Please change the directory below to a folder of your choice
 				String file_name= "C:\\Users\\User\\Documents\\Visitor_Report\\Report_"+cDate+".pdf";
 				Document document = new Document();
 				
@@ -142,7 +146,30 @@ public class admin extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}if(txtpCheck.getText()=="") {
+					try {
+						PdfWriter.getInstance(document, new FileOutputStream(file_name));
+						
+							
+						try {
+							document.open();
+						Paragraph para2 = new Paragraph("No record on this day.");
+						txtpCheck.setText(para2.toString());
+							document.add(para2);
+						} catch (DocumentException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+						
+					} catch (FileNotFoundException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					} catch (DocumentException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}document.close();
 					JOptionPane.showMessageDialog(null, "No record found.");
+					
 				}
 
 				}
@@ -151,6 +178,7 @@ public class admin extends JFrame {
 		btnReport.setBounds(292, 344, 130, 37);
 		contentPane.add(btnReport);
 		
+		//Generates list of tickets
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.setForeground(new Color(255, 250, 250));
 		btnGenerate.setBackground(new Color(70, 130, 180));
@@ -190,6 +218,8 @@ public class admin extends JFrame {
 				e1.printStackTrace();
 			}if(txtpCheck.getText()=="") {
 				JOptionPane.showMessageDialog(null, "No record found.");
+				 txtpCheck.setText("No record found on this day.");
+
 			}
 			}
 		});
@@ -222,6 +252,18 @@ public class admin extends JFrame {
 		String inCharge = Login.txtStaffID.getText();
 		lblAdmin.setText("Welcome, "+inCharge+".");
 		
-		
+		//Auto-Test Function for generating report
+		JButton btnTestAdmin = new JButton("Test Admin");
+		btnTestAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnGenerate.doClick();
+			}
+		});
+		btnTestAdmin.setBounds(432, 351, 89, 23);
+		contentPane.add(btnTestAdmin);
+		//////////
+		btnTestAdmin.setVisible(false);
+		//Testing the AUTO-test function
+		btnTestAdmin.doClick();
 	}
 }
