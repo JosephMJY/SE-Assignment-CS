@@ -83,9 +83,7 @@ public class admin extends JFrame {
 		JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		jsp.setBounds(83,45,357,288);
 		contentPane.add(jsp);
-		
-		//Contingency report function
-		JButton btnReport = new JButton("Generate & Save Report");
+		JButton btnReport = new JButton("Generate Report");
 		btnReport.setForeground(new Color(255, 250, 250));
 		btnReport.setBackground(new Color(70, 130, 180));
 		
@@ -95,10 +93,8 @@ public class admin extends JFrame {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				String cDate = sdf.format(dateChooser.getDate());
 				
-				//storing generated document into a folder
 				LocalDate lt = LocalDate.now();
-				//Please change the directory below to a folder of your choice
-				String file_name= "C:\\Users\\User\\Documents\\Visitor_Report\\Report_"+cDate+".pdf";
+				String file_name= "C:\\Users\\leeli\\OneDrive\\Desktop\\LiRong INTI\\SE\\Visitor_Report\\Report_"+cDate+".pdf";
 				Document document = new Document();
 				
 				
@@ -178,7 +174,6 @@ public class admin extends JFrame {
 		btnReport.setBounds(292, 344, 130, 37);
 		contentPane.add(btnReport);
 		
-		//Generates list of tickets
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.setForeground(new Color(255, 250, 250));
 		btnGenerate.setBackground(new Color(70, 130, 180));
@@ -218,8 +213,6 @@ public class admin extends JFrame {
 				e1.printStackTrace();
 			}if(txtpCheck.getText()=="") {
 				JOptionPane.showMessageDialog(null, "No record found.");
-				 txtpCheck.setText("No record found on this day.");
-
 			}
 			}
 		});
@@ -252,7 +245,6 @@ public class admin extends JFrame {
 		String inCharge = Login.txtStaffID.getText();
 		lblAdmin.setText("Welcome, "+inCharge+".");
 		
-		//Auto-Test Function for generating report
 		JButton btnTestAdmin = new JButton("Test Admin");
 		btnTestAdmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -261,9 +253,8 @@ public class admin extends JFrame {
 		});
 		btnTestAdmin.setBounds(432, 351, 89, 23);
 		contentPane.add(btnTestAdmin);
-		//////////
+		//Testing
+		//btnTestAdmin.doClick();
 		btnTestAdmin.setVisible(false);
-		//Testing the AUTO-test function
-		btnTestAdmin.doClick();
 	}
 }

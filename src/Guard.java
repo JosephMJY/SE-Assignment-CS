@@ -384,6 +384,7 @@ public class Guard extends JFrame {
 		//Testing
 		//btnTestGuard.doClick();
 		//line 120-121 for testing
+		btnTestGuard.setVisible(false);
 		
 
 	}

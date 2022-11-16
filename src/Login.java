@@ -47,7 +47,7 @@ public class Login extends JFrame {
 		setTitle("Visitor Management System");
 		Connection conn = DbConnection.database();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 487, 346);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(135, 206, 250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -56,28 +56,29 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtStaffID = new JTextField();
-		txtStaffID.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		txtStaffID.setBounds(163, 69, 148, 23);
+		txtStaffID.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(txtStaffID);
 		txtStaffID.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Login");
-		btnNewButton.setForeground(new Color(255, 250, 250));
-		btnNewButton.setBackground(new Color(70, 130, 180));
+		JButton btnLogin = new JButton("Login");
+		btnLogin.setBounds(194, 159, 89, 23);
+		btnLogin.setForeground(new Color(255, 250, 250));
+		btnLogin.setBackground(new Color(70, 130, 180));
+		contentPane.add(btnLogin);
 		
-		btnNewButton.setBounds(194, 159, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Not Staff? Click to Request For Visit...");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_1.setForeground(new Color(255, 250, 250));
-		btnNewButton_1.setBackground(new Color(70, 130, 180));
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnVisitor = new JButton("Not Staff? Click to Request For Visit...");
+		btnVisitor.setBounds(80, 205, 306, 45);
+		btnVisitor.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnVisitor.setForeground(new Color(255, 250, 250));
+		btnVisitor.setBackground(new Color(70, 130, 180));
+		btnVisitor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				visitor vs = null;
 				try {
 					vs = new visitor();
+					System.out.println("Visitor Test Successful");
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -86,25 +87,96 @@ public class Login extends JFrame {
 				}
 			
 		});
-		btnNewButton_1.setBounds(80, 205, 306, 45);
-		contentPane.add(btnNewButton_1);
+		contentPane.add(btnVisitor);
 		
 		JLabel lblID = new JLabel("Staff ID: ");
-		lblID.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblID.setBounds(75, 72, 63, 14);
+		lblID.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		contentPane.add(lblID);
 		
 		JLabel lblPass = new JLabel("Password: ");
-		lblPass.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblPass.setBounds(75, 118, 78, 14);
+		lblPass.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		contentPane.add(lblPass);
 		
 		staffpass = new JPasswordField();
-		staffpass.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		staffpass.setBounds(163, 115, 148, 23);
+		staffpass.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		contentPane.add(staffpass);
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnTestGuard = new JButton("Test Guard");
+		btnTestGuard.setBounds(307, 261, 89, 23);
+		contentPane.add(btnTestGuard);
+		
+		JButton btnTestOfficer = new JButton("Test Officer");
+		btnTestOfficer.setBounds(109, 261, 89, 23);
+		btnTestOfficer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtStaffID.setText("SO1");
+				staffpass.setText("123456");
+				
+				btnLogin.doClick();
+				System.out.println("Btn Officer Clicked.");
+			}
+		});
+		contentPane.add(btnTestOfficer);
+		
+		JButton btnTestVisitor = new JButton("Test Visitor");
+		btnTestVisitor.setBounds(10, 261, 89, 23);
+		btnTestVisitor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnVisitor.doClick();
+			}
+		});
+		contentPane.add(btnTestVisitor);
+		
+		JButton btnTestVisitorCheck = new JButton("Test Check");
+		btnTestVisitorCheck.setBounds(208, 261, 89, 23);
+		btnTestVisitorCheck.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnVisitor.doClick();
+			}
+		});
+		contentPane.add(btnTestVisitorCheck);
+		
+		JButton btnTestAdmin = new JButton("Test Admin");
+		btnTestAdmin.setBounds(402, 261, 89, 23);
+		btnTestAdmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtStaffID.setText("ADMIN");
+				staffpass.setText("123456789");
+				
+				btnLogin.doClick();
+				System.out.println("Btn Admin Clicked.");
+			}
+		});
+		contentPane.add(btnTestAdmin);
+		
+		JButton btnTestLoginInvalid = new JButton("Test Invalid Login");
+		btnTestLoginInvalid.setBounds(237, 284, 89, 23);
+		btnTestLoginInvalid.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtStaffID.setText("123");
+				staffpass.setText("123");
+				
+				btnLogin.doClick();
+				System.out.println("Btn Invalid Login Clicked.");
+			}
+		});
+		contentPane.add(btnTestLoginInvalid);
+		
+		btnTestGuard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtStaffID.setText("GRD1");
+				staffpass.setText("123");
+				
+				btnLogin.doClick();
+				System.out.println("Btn Guard Clicked.");
+			}
+		});
+		
+		
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String sID = txtStaffID.getText();
 				String sPass = String.valueOf(staffpass.getPassword());
@@ -128,6 +200,7 @@ public class Login extends JFrame {
 							Officer ofc = null;
 							try {
 								ofc = new Officer();
+								System.out.println("Officer Test Successful");
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -138,8 +211,10 @@ public class Login extends JFrame {
 							chk=true;
 							dispose();
 							Guard grd = null;
+							
 							try {
 								grd = new Guard();
+								System.out.println("Guard Test Successful");
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -152,6 +227,7 @@ public class Login extends JFrame {
 							admin ad = null;
 							try {
 								ad = new admin();
+								System.out.println("Admin Test Successful.");
 							} catch (Exception e1) {
 								// TODO Auto-generated catch block
 								e1.printStackTrace();
@@ -172,5 +248,18 @@ public class Login extends JFrame {
 				
 			}
 		});
+		//btnTestVisitor.doClick();
+		//btnTestOfficer.doClick();
+		//btnTestVisitorCheck.doClick();
+		//btnTestGuard.doClick();
+		//btnTestAdmin.doClick();
+		//btnTestLoginInvalid.doClick();
+		btnTestVisitor.setVisible(false);
+		btnTestOfficer.setVisible(false);
+		btnTestVisitorCheck.setVisible(false);
+		btnTestGuard.setVisible(false);
+		btnTestAdmin.setVisible(false);
+		btnTestLoginInvalid.setVisible(false);
+		
 	}
 }

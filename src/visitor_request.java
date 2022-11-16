@@ -189,17 +189,19 @@ public class visitor_request extends JFrame {
 				if(purpose.isEmpty()||purpose.equals("What's your purpose of visit?")) {
 					JOptionPane.showMessageDialog(null,"Invalid purpose format.\nPlease State Your Purpose of Visit.");
 					invalid=true;
-				}if(mytime<date2||mytime<8||mytime>17) {
-					JOptionPane.showMessageDialog(null,"Time cannot be earlier than current time.\nTime of Visit(8.00am-17.59pm).");
+				}
+				if(mytime<date2||mytime<8||mytime>17) {
+				JOptionPane.showMessageDialog(null,"Time cannot be earlier than current time.\nTime of Visit(8.00am-17.59pm).");
 					invalid=true;
-				}if(mytimeMin<dateMin) {
+				}
+				if(mytimeMin<dateMin) {
 					JOptionPane.showMessageDialog(null,"Time cannot be earlier than current time.\nTime of Visit(8.00am-17.59pm).");
 					invalid=true;
 				}
 				if(invalid==false) {
 				int submit = JOptionPane.showConfirmDialog(null,"Confirm to submit?");
 				//Testing
-				//submit=0;
+				submit=0;
 				if(submit==0) {
 				try {
 					
@@ -225,7 +227,7 @@ public class visitor_request extends JFrame {
 					txtPhone.setText("");
 					txtpnPurpose.setText("");
 					
-					
+					System.out.println("Automated Testing Successful.");
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -370,7 +372,7 @@ public class visitor_request extends JFrame {
 		//Testing
 		//btnTestVisitor.doClick();
 		//line 201-202
-		
+		btnTestVisitor.setVisible(false);
 
 		
 		

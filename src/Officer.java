@@ -211,6 +211,10 @@ public class Officer extends JFrame {
 						btnApprove.setEnabled(true);
 						btnReject.setEnabled(true);
 					}
+					else {
+						btnApprove.setEnabled(false);
+						btnReject.setEnabled(false);
+					}
 				}
 				
 				txtDetails.setText(details);
@@ -248,7 +252,11 @@ public class Officer extends JFrame {
 							btnApprove.setEnabled(true);
 							btnReject.setEnabled(true);
 						}
-						details = name +"\n" +ic +"\n" +phone +"\n" +purpose +"\n" +tov +"\n" +dov +"\n";
+						else {
+							btnApprove.setEnabled(false);
+							btnReject.setEnabled(false);
+						}
+						details = name +"\n" +ic +"\n" +phone +"\n" +purpose +"\n" +tov +"\n" +dov +"\n" +status +"\n";
 						
 					}
 					
